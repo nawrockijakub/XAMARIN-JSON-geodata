@@ -5,10 +5,22 @@
              x:Class="jsonlistview.MainPage">
 
     <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
+        <Label Text="Tear"></Label>
+        <ListView ItemsSource="{Binding}"
+                  ItemTapped="ItemTapped">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <TextCell Text="{Binding properties.Navn}" Detail="{Binding properties.Adresse}">
+                        <TextCell.ContextActions>
+                            <MenuItem Clicked="ItemDelete"
+                        CommandParameter="{Binding}"
+                        Text="Delete" IsDestructive="True" />
+                        </TextCell.ContextActions>
+                    </TextCell>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
     </StackLayout>
 
 </ContentPage>
