@@ -14,25 +14,20 @@ namespace jsonlistview
     public partial class MainPage : ContentPage
     {
         readonly IList<RootObject> toilets = new ObservableCollection<RootObject>();
-        //readonly ToiletManager manager = new ToiletManager();
         public MainPage()
         {
             InitializeComponent();
-
             ToiletCollection tc = new ToiletCollection();
             var toilets = tc.GetData();
             BindingContext = toilets.features;
-
-            
-            // foreach(var item in toilets)
-            // {
-            ////     System.Diagnostics.Debug.WriteLine(item.features[0].properties.Navn);
-            // }
-            System.Diagnostics.Debug.WriteLine(toilets.features[0].properties.Navn);
-            System.Diagnostics.Debug.WriteLine(toilets.features[1].properties.Navn);
-            System.Diagnostics.Debug.WriteLine(toilets.features[2].properties.Navn);
         }
-        public void ItemTapped(object sender, EventArgs e) { }
+
+
+        public async void ItemTapped(object sender, ItemTappedEventArgs e) {
+            Feature selected = (Feature)e.Item;
+            //DependencyService.Get<FunFlactsViewModel>().CurrentFlag = selected;
+            await Navigation.PushModalAsync(new NavigationPage(new Toilet(selected)));
+        }
         public void ItemDelete(object sender, EventArgs e) { }
     }
     

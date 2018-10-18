@@ -5,7 +5,7 @@
              x:Class="jsonlistview.MainPage">
 
     <StackLayout>
-        <Label Text="Tear"></Label>
+        <Label Text="Locations of handicapped-friendly toilets in Odense" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand"></Label>
         <ListView ItemsSource="{Binding}"
                   ItemTapped="ItemTapped">
             <ListView.ItemTemplate>
